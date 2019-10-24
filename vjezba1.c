@@ -44,10 +44,17 @@ int CountStudentsFromFile(const char *Filename)
 {
 	int count = 0;
 	int ch = 0;
+	char buff[MAX_SIZE];
 	FILE *fp = NULL;
 	fp = fopen(Filename,"r");
 	
-	do
+	while(!feof(fp))
+	{
+		fgets(buff, MAX_SIZE, fp);
+		count++;
+	}
+	
+	/*do
 	{
 		ch=fgetc(fp);
 		if(ch == '\n')
@@ -55,9 +62,10 @@ int CountStudentsFromFile(const char *Filename)
 	}
 	while(ch!=EOF);
 	if(ch !='\n' && count != 0)
-		count++;
-	
+		count++;*/
+	printf("%d", count);
 	fclose(fp);
+	
 	
 	return count;
 }
